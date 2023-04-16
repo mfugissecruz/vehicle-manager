@@ -18,4 +18,14 @@ class Vehicle extends Model
         'engine_number',
         'image',
     ];
+
+    public function mileageRecords()
+    {
+        return $this->hasMany(MileageRecord::class);
+    }
+
+    public function fuelSupplyRecords()
+    {
+        return $this->hasMany(FuelSupplyRecord::class);
+    }
 }
