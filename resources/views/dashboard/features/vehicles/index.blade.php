@@ -1,7 +1,7 @@
 <x-dashboard.default-layout>
-    <div class="container p-4">
+    <div class="px-4 py-2.5">
         <div class="shadow-md sm:rounded-lg">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-2.5 p-4 bg-white min-w-full">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-2.5 p-4 bg-white">
                 <form action="#" method="GET">
                     <div class="flex items-center gap-1.5">
                         <label for="search" class="h-full">
@@ -43,7 +43,7 @@
                                 Marca
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Ano
+                                Placa
                             </th>
                             <th scope="col" class="px-6 py-3 sr-only">
                                 Action
@@ -64,13 +64,13 @@
                                         {{ $vehicle->make }}
                                     </td>
                                     <td class="px-6 py-4 text-base">
-                                        {{ $vehicle->year }}
+                                        {{ $vehicle->plate_number }}
                                     </td>
                                     <td class="px-6 py-4 space-x-3">
                                         <div class="flex items-center gap-2">
                                             <a href="{{ route('dashboard.vehicles.show', $vehicle->id) }}" class="font-medium text-blue-600 hover:underline">Ver</a>
                                             <a href="{{ route('dashboard.vehicles.edit', $vehicle->id) }}" class="font-medium text-blue-600 hover:underline">Editar</a>
-                                            <button onclick="confirmDelete('{{ route('dashboard.vehicles.destroy', $vehicle->id) }}', '{{ route('dashboard.vehicles.index') }}')" class="font-medium text-red-600 hover:underline">Deletar</button>
+                                            <button onclick="confirmDelete('{{ route('dashboard.vehicles.destroy', $vehicle->id) }}')" class="font-medium text-red-600 hover:underline">Deletar</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -84,7 +84,7 @@
                         @endif
                     </tbody>
                 </table>
-                {{ $vehicles->links() }}
+                {{ $vehicles->appends(['search' => request('search')])->links() }}
             </div>
         </div>
         <x-dashboard.delete-modal />

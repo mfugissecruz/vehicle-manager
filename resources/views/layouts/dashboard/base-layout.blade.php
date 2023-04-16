@@ -15,8 +15,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')
     </head>
-    <body class="font-sans antialiased bg-gray-100">
-        {{ $slot }}
+    <body class="relative w-full bg-gray-100">
+        @if (session()->has('success')) <x-dashboard.flash-messages.success :message="session('success')" /> @endif
+        @if (session()->has('warning')) <x-dashboard.flash-messages.warning :message="session('warning')" /> @endif
+        @if (session()->has('failed')) <x-dashboard.flash-messages.failed :message="session('failed')" />  @endif
+
+        <div class="flex">
+            {{ $slot }}
+        </div>
+
         @stack('scripts')
     </body>
 </html>
