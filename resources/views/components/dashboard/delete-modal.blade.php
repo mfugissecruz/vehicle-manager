@@ -43,7 +43,7 @@
     @push('scripts')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
-            function confirmDelete(deleteUrl, returnUrl) {
+            function confirmDelete(deleteUrl) {
                 $('#delete-modal').removeClass('hidden');
                 $('#cancel-btn').on('click', function(){
                     $('#delete-modal').addClass('hidden');
