@@ -1,6 +1,7 @@
 ## Sobre o Projeto
 
-Teste de conhecimento para a vaga de Desenvolvedor PHP na empresa [**ACS Consultoria e Serviços**](http://www.acslab.com.br/).
+Teste de conhecimento para a vaga de Desenvolvedor PHP Júnior na empresa [**ACS Consultoria e Serviços**](http://www.acslab.com.br/).
+Para este projeto foi utilizado o framework [**Laravel**](https://laravel.com/), que é um framework PHP de código aberto para desenvolvimento de aplicações web com o padrão arquitetural MVC (Model-View-Controller).
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
