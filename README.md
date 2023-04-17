@@ -3,6 +3,34 @@
 Teste de conhecimento para a vaga de Desenvolvedor PHP Júnior na empresa [**ACS Consultoria e Serviços**](http://www.acslab.com.br/).
 Para este projeto foi utilizado o framework [**Laravel**](https://laravel.com/), que é um framework PHP de código aberto para desenvolvimento de aplicações web com o padrão arquitetural MVC (Model-View-Controller).
 
+## Requisitos
+
+Para executar este projeto, é necessário ter instalado em sua máquina: 
+- [**Composer**](https://getcomposer.org/),
+- [**PHP v8.1**](https://www.php.net/downloads),
+- [**MySQL v8.0**](https://www.mysql.com/downloads/),
+- [**Node.js v14.17.6**](https://nodejs.org/en/download/),
+
+## Instruções para instalação e execução
+- Clone o repositório: `git clone git@github.com:mfugissecruz/vehicle-manager.git`,
+- Acesse a pasta do projeto: `cd vehicle-manager`,
+- Instale as dependências do projeto: 
+    `composer install`
+    `npm install`
+- Copie o arquivo `.env.example` para `.env`,
+- Gere a chave da aplicação:
+    `php artisan key:generate`
+- Crie um link simbólico para a pasta `storage`:
+    `php artisan storage:link`
+- Crie um banco de dados no MySQL:
+    `php artisan migrate`,
+- Execute o projeto:
+    `php artisan serve`
+    `npm run dev`
+
+##
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -11,7 +39,6 @@ Para este projeto foi utilizado o framework [**Laravel**](https://laravel.com/),
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
