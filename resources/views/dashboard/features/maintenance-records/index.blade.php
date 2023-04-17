@@ -31,7 +31,7 @@
                 </form>
                 <div>
                     <div class="h-6"></div>
-                    <a href="{{ route('dashboard.mileage-records.create') }}" class="px-5 text-white bg-indigo-500 hover:bg-indigo-600 py-2.5 rounded-md">
+                    <a href="{{ route('dashboard.maintenance-records.create') }}" class="px-5 text-white bg-indigo-500 hover:bg-indigo-600 py-2.5 rounded-md">
                         Adicionar
                     </a>
                 </div>
@@ -44,13 +44,10 @@
                                 Veículo
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Quilometragem
+                                Mecânico
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Data de Registro
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Data de Preenchimento
+                                Data
                             </th>
                             <th scope="col" class="px-6 py-3 sr-only">
                                 Action
@@ -58,26 +55,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($mileageRecords))
-                            @foreach ($mileageRecords as $key => $mileageRecord)
+                        @if (count($maintenanceRecords))
+                            @foreach ($maintenanceRecords as $key => $maintenanceRecord)
                                 <tr class="{{ $key % 2 === 0  ? 'bg-gray-200' : ''}}">
                                     <td class="px-6 py-4 text-base">
-                                        {{ $mileageRecord->vehicle->model }}
-                                    </td>
-                                    <td class="px-6 py-4 text-base">
-                                        {{ $mileageRecord->mileage }} KM
-                                    </td>
-                                    <td class="px-6 py-4 text-base">
-                                        {{ \Carbon\Carbon::parse($mileageRecord->date)->format('d/m/Y')}}
+                                        {{ $maintenanceRecord->vehicle->model }}
                                     </td>
 
                                     <td class="px-6 py-4 text-base">
-                                        {{ \Carbon\Carbon::parse($mileageRecord->created_at)->format('d/m/Y H:i:s') }}
+                                        {{ $maintenanceRecord->mechanic->name }}
                                     </td>
+
+                                    <td class="px-6 py-4 text-base">
+                                        {{ \Carbon\Carbon::parse($maintenanceRecord->date)->format('d/m/Y')}}
+                                    </td>
+
                                     <td class="px-6 py-4 space-x-3">
                                         <div class="flex items-center gap-2">
-                                            <a href="{{ route('dashboard.mileage-records.show', $mileageRecord->id) }}" class="font-medium text-blue-600 hover:underline">Ver</a>
-                                            <a href="{{ route('dashboard.mileage-records.edit', $mileageRecord->id) }}" class="font-medium text-blue-600 hover:underline">Editar</a>
+                                            <a href="{{ route('dashboard.maintenance-records.show', $maintenanceRecord->id) }}" class="font-medium text-blue-600 hover:underline">Ver</a>
+                                            <a href="{{ route('dashboard.maintenance-records.edit', $maintenanceRecord->id) }}" class="font-medium text-blue-600 hover:underline">Editar</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -94,7 +90,7 @@
             </div>
         </div>
         <div class="my-5">
-            {{ $mileageRecords->appends(['start_date' => request('start_date'), 'end_date' => request('end_date')])->links() }}
+            {{ $maintenanceRecords->appends(['start_date' => request('start_date'), 'end_date' => request('end_date')])->links() }}
         </div>
     </div>
 </x-dashboard.default-layout>

@@ -20,6 +20,20 @@
                 </label>
             </div>
 
+             {{-- driver_id --}}
+             <div class="mb-4">
+                <label for="driver_id" class="flex flex-col">
+                    <span>Motorista</span>
+                    <select name="driver_id" id="driver_id" class="rounded" required>
+                        <option value="">Selecione um motorista</option>
+                        @foreach ($drivers as $driver)
+                            <option value="{{ $driver->id }}" {{ old('driver_id') == $driver->id ? 'selected' : '' }}>{{ $driver->name }}</option>
+                        @endforeach
+                    </select>
+                    @error("driver_id")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
+                </label>
+            </div>
+
             {{-- date --}}
             <div class="mb-4">
                 <label for="date" class="flex flex-col">

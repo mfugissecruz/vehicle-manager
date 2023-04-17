@@ -1,9 +1,10 @@
+
 <x-dashboard.default-layout>
     <div class="flex flex-col items-center justify-start max-w-2xl gap-4 px-8 py-4 m-4 mx-auto bg-white rounded shadow-md">
-        <form action="{{ route('dashboard.mileage-records.store') }}" method="POST" enctype="multipart/form-data" class="w-full overflow-y-auto">
+        <form action="{{ route('dashboard.maintenance-records.store') }}" method="POST" enctype="multipart/form-data" class="w-full overflow-y-auto">
             @csrf
             <div class="mb-4">
-                <h1 class="text-2xl font-bold">Registro de Quilometragem</h1>
+                <h1 class="text-2xl font-bold">Registro de Manutenção</h1>
             </div>
 
             {{-- vehicle_id --}}
@@ -20,33 +21,42 @@
                 </label>
             </div>
 
-            {{-- driver_id --}}
-            <div class="mb-4">
-                <label for="driver_id" class="flex flex-col">
-                    <span>Motorista</span>
-                    <select name="driver_id" id="driver_id" class="rounded" required>
-                        <option value="">Selecione um motorista</option>
-                        @foreach ($drivers as $driver)
-                            <option value="{{ $driver->id }}" {{ old('driver_id') == $driver->id ? 'selected' : '' }}>{{ $driver->name }}</option>
+             {{-- mechanic_id --}}
+             <div class="mb-4">
+                <label for="mechanic_id" class="flex flex-col">
+                    <span>Mecânico</span>
+                    <select name="mechanic_id" id="mechanic_id" class="rounded" required>
+                        <option value="">Selecione um Mecânico</option>
+                        @foreach ($mechanics as $mechanic)
+                            <option value="{{ $mechanic->id }}" {{ old('mechanic_id') == $mechanic->id ? 'selected' : '' }}>{{ $mechanic->name }}</option>
                         @endforeach
                     </select>
-                    @error("driver_id")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
+                    @error("mechanic_id")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
                 </label>
             </div>
 
-            {{-- mileage --}}
+            {{-- description --}}
             <div class="mb-4">
-                <label for="mileage" class="flex flex-col">
-                    <span>Quilometragem</span>
-                    <input type="number" min="0" name="mileage" id="mileage" class="rounded" value="{{ old('mileage') }}" />
-                    @error("mileage")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
+                <label for="description" class="flex flex-col">
+                    <span>Descrição</span>
+                    <textarea rows="5" name="description" id="description" class="rounded" required>{{ old('description') }}</textarea>
+                    @error("description")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
+                </label>
+            </div>
+
+            {{-- cost --}}
+            <div class="mb-4">
+                <label for="cost" class="flex flex-col">
+                    <span>Custo</span>
+                    <input type="text" name="cost" id="cost" class="rounded" value="{{ old('cost') }}" required />
+                    @error("cost")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
                 </label>
             </div>
 
             {{-- date --}}
             <div class="mb-4">
                 <label for="date" class="flex flex-col">
-                    <span>Data do Registro</span>
+                    <span>Data da Manutenção</span>
                     <input type="date" name="date" id="date" class="rounded" value="{{ old('date', \Carbon\Carbon::today()->format('Y-m-d')) }}" />
                     @error("date")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
                 </label>

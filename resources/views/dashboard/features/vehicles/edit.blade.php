@@ -6,7 +6,7 @@
 
         <form action="{{ route('dashboard.vehicles.update', $vehicle->id) }}" method="POST" enctype="multipart/form-data" class="w-full">
             @csrf
-            @method('PATCH')
+            @method('PUT')
             <div class="mb-4">
                 <h1 class="text-2xl font-bold">Editar Veículo</h1>
             </div>

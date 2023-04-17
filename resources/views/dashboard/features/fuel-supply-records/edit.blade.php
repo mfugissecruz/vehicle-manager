@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center justify-start max-w-2xl gap-4 px-8 py-4 m-4 mx-auto bg-white rounded shadow-md">
         <form action="{{ route('dashboard.fuel-supply-records.update', $fuelSupplyRecord->id) }}" method="POST" enctype="multipart/form-data" class="w-full overflow-y-auto">
             @csrf
-            @method('PATCH')
+            @method('PUT')
             <div class="mb-4">
                 <h1 class="text-2xl font-bold">Editar Registro de Abastecimento</h1>
             </div>
@@ -20,6 +20,20 @@
                     @error("vehicle_id")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
                 </label>
             </div>
+
+            {{-- driver_id --}}
+            <div class="mb-4">
+            <label for="driver_id" class="flex flex-col">
+                <span>Motorista</span>
+                <select name="driver_id" id="driver_id" class="rounded" required>
+                    <option value="">Selecione um motorista</option>
+                    @foreach ($drivers as $driver)
+                        <option value="{{ $driver->id }}" {{ old('driver_id', $fuelSupplyRecord->driver->id) == $driver->id ? 'selected' : '' }}>{{ $driver->name }}</option>
+                    @endforeach
+                </select>
+                @error("driver_id")<small class="font-bold text-red-600"> {{ $message }} </small>@enderror
+            </label>
+        </div>
 
             {{-- date --}}
             <div class="mb-4">
