@@ -1,31 +1,35 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\MileageRecordController;
+use App\Http\Controllers\FuelSupplyRecordController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\MaintenanceRecordController;
+use App\Http\Controllers\MechanicController;;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::permanentRedirect('/', '/login');
+Route::permanentRedirect('/dashboard', '/dashboard/vehicles');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function () {
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
+
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-require __DIR__.'/auth.php';
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::resource('vehicles', VehicleController::class);
+        Route::resource('drivers', DriverController::class);
+        Route::resource('mechanics', MechanicController::class);
+        Route::resource('maintenance-records', MaintenanceRecordController::class)->except('destroy');
+        Route::resource('mileage-records', MileageRecordController::class)->except('destroy');
+        Route::resource('fuel-supply-records', FuelSupplyRecordController::class)->except('destroy');
+    });
+});
