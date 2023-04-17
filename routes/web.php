@@ -25,11 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::resource('vehicles', VehicleController::class);
-        Route::resource('drivers', DriverController::class);
-        Route::resource('mechanics', MechanicController::class);
-        Route::resource('maintenance-records', MaintenanceRecordController::class)->except('destroy');
-        Route::resource('mileage-records', MileageRecordController::class)->except('destroy');
-        Route::resource('fuel-supply-records', FuelSupplyRecordController::class)->except('destroy');
+        Route::resource('vehicles', VehicleController::class)->except('show');
+        Route::resource('drivers', DriverController::class)->except('show');
+        Route::resource('mechanics', MechanicController::class)->except('show');
+        Route::resource('maintenance-records', MaintenanceRecordController::class)->except(['show', 'destroy']);
+        Route::resource('mileage-records', MileageRecordController::class)->except(['show', 'destroy']);
+        Route::resource('fuel-supply-records', FuelSupplyRecordController::class)->except(['show', 'destroy']);
     });
 });

@@ -52,11 +52,6 @@ class DriverController extends Controller
         return redirect()->route('dashboard.drivers.index');
     }
 
-    public function show(Driver $driver)
-    {
-        return view('drivers.show');
-    }
-
     public function edit(Driver $driver)
     {
         return view('dashboard.features.drivers.edit')
@@ -89,9 +84,6 @@ class DriverController extends Controller
         return redirect()->route('dashboard.drivers.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Driver $driver): void
     {
         Storage::delete(Str::replace('storage/', 'public/', 'storage/drivers/GsCWKsyLFHEGEBO2WV6nbzD1g64WDIe4F442CaTp.jpg'));

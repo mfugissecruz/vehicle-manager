@@ -68,7 +68,6 @@
                                     </td>
                                     <td class="px-6 py-4 space-x-3">
                                         <div class="flex items-center gap-2">
-                                            <a href="{{ route('dashboard.vehicles.show', $vehicle->id) }}" class="font-medium text-blue-600 hover:underline">Ver</a>
                                             <a href="{{ route('dashboard.vehicles.edit', $vehicle->id) }}" class="font-medium text-blue-600 hover:underline">Editar</a>
                                             <button onclick="confirmDelete('{{ route('dashboard.vehicles.destroy', $vehicle->id) }}')" class="font-medium text-red-600 hover:underline">Deletar</button>
                                         </div>

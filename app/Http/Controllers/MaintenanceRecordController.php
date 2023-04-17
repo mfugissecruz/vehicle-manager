@@ -48,12 +48,6 @@ class MaintenanceRecordController extends Controller
         return redirect()->route('dashboard.maintenance-records.index');
     }
 
-    public function show(MaintenanceRecord $maintenanceRecord)
-    {
-        return view('dashboard.features.maintenance-records.show')
-            ->with('maintenanceRecord', $maintenanceRecord);
-    }
-
     public function edit(MaintenanceRecord $maintenanceRecord)
     {
         return view('dashboard.features.maintenance-records.edit')

@@ -84,7 +84,6 @@
                                     </td>
                                     <td class="px-6 py-4 space-x-3">
                                         <div class="flex items-center gap-2">
-                                            <a href="{{ route('dashboard.fuel-supply-records.show', $fuelSupplyRecord->id) }}" class="font-medium text-blue-600 hover:underline">Ver</a>
                                             <a href="{{ route('dashboard.fuel-supply-records.edit', $fuelSupplyRecord->id) }}" class="font-medium text-blue-600 hover:underline">Editar</a>
                                         </div>
                                     </td>
