@@ -19,13 +19,23 @@ class Vehicle extends Model
         'image',
     ];
 
-    public function mileageRecords()
+    public function driver()
     {
-        return $this->hasMany(MileageRecord::class);
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function mechanic()
+    {
+        return $this->belongsTo(Mechanic::class);
     }
 
     public function fuelSupplyRecords()
     {
         return $this->hasMany(FuelSupplyRecord::class);
+    }
+
+    public function mileageRecords()
+    {
+        return $this->hasMany(MileageRecord::class);
     }
 }
